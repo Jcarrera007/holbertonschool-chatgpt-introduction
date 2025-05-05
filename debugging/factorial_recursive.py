@@ -2,26 +2,21 @@
 import sys
 
 def factorial(n):
+    """
+    Recursively calculates the factorial of a non-negative integer.
+
+    Parameters:
+    n (int): The number to calculate the factorial of. Must be a non-negative integer.
+
+    Returns:
+    int: The factorial of the input number.
+    """
     if n == 0:
         return 1
-    elif n < 0:
-        raise ValueError("Factorial is undefined for negative numbers.")
     else:
         return n * factorial(n - 1)
 
-if __name__ == "__main__":
-    if len(sys.argv) != 2:
-        print(f"Usage: {sys.argv[0]} <non-negative integer>")
-        sys.exit(1)
-    
-    try:
-        num = int(sys.argv[1])
-        result = factorial(num)
-        print(result)
-    except ValueError as e:
-        print(f"Error: {e}")
-        sys.exit(1)
-    except RecursionError:
-        print("Error: Number too large.")
-        sys.exit(1)
-
+# Read integer input from the command-line arguments,
+# compute its factorial, and print the result
+f = factorial(int(sys.argv[1]))
+print(f)
